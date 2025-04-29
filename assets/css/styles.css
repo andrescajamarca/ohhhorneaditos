@@ -1,0 +1,94 @@
+/* Variables de colores */
+:root {
+    --color-primary: #7C4D28;
+    --color-secondary: #61C1B0;
+    --color-background: #F4E9D6;
+    --color-text: #333333;
+}
+
+/* Estilos generales */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: white;
+    color: var(--color-text);
+}
+
+/* Estilos del header */
+header {
+    background-color: var(--color-background);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Estilos de navegación */
+.nav-link {
+    color: var(--color-primary);
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-secondary);
+}
+
+/* Secciones */
+.section {
+    padding: 4rem 1rem;
+}
+
+.section-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Productos */
+.product-card {
+    width: 16rem;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Colores de fondo personalizados */
+.bg-custom-teal {
+    background-color: #E0F7F5;
+}
+
+.bg-custom-products {
+    background-color: #58C3B5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section {
+        padding: 2rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.875rem;
+    }
+    
+    .product-card {
+        width: 100%;
+        max-width: 16rem;
+    }
+} 
