@@ -14,7 +14,7 @@ Sitio web oficial de Ohhhorneaditos, tu destino para snacks saludables y delicio
 
 - Instagram: [@ohh.horneaditos](https://www.instagram.com/ohh.horneaditos/)
 - WhatsApp: +57 316 370 0606
-- Email: contacto@ohhhorneaditos.com
+- Email: ohh.horneaditos@gmail.com
 
 ---
 © 2024 Ohhhorneaditos. Todos los derechos reservados. 
