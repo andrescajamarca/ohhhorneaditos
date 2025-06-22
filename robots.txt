@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+
+# Permitir indexado de todas las páginas principales
+Allow: /index.html
+Allow: /pages/
+Allow: /assets/images/
+Allow: /assets/css/
+Allow: /assets/js/
+
+# Bloquear acceso a archivos de configuración y privados
+Disallow: /.git/
+Disallow: /.gitignore
+Disallow: /README.md
+Disallow: /MEJORAS_CTAS.md
+Disallow: /.DS_Store
+
+# Bloquear acceso a archivos de video para evitar hotlinking
+Disallow: /assets/videos/
+
+# Sitemap para ayudar a los motores de búsqueda
+Sitemap: https://pikasnacks.com/sitemap.xml
+
+# Tiempo de espera entre requests (en segundos)
+Crawl-delay: 1 
