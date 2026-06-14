@@ -19,7 +19,7 @@ Disallow: /.DS_Store
 Disallow: /assets/videos/
 
 # Sitemap para ayudar a los motores de búsqueda
-Sitemap: https://pikasnacks.com/sitemap.xml
+Sitemap: https://www.pikasnacks.co/sitemap.xml
 
 # Tiempo de espera entre requests (en segundos)
 Crawl-delay: 1 

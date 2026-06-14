@@ -48,8 +48,8 @@
 # Redireccionar www a no-www (si el servidor lo soporta)
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteCond %{HTTP_HOST} ^www\.pikasnacks\.com [NC]
-    RewriteRule ^(.*)$ https://pikasnacks.com/$1 [L,R=301]
+    RewriteCond %{HTTP_HOST} ^pikasnacks\.co [NC]
+    RewriteRule ^(.*)$ https://www.pikasnacks.co/$1 [L,R=301]
     
     # Forzar HTTPS (si el servidor lo soporta)
     RewriteCond %{HTTPS} off
