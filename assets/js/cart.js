@@ -78,10 +78,44 @@ const Cart = {
 const CartUI = {
 
     init() {
+        this.applyPricesFromMicrodata();
         this.injectCartIcon();
         this.injectOffcanvas();
         this.bindProductButtons();
         this.updateBadge();
+    },
+
+    applyPricesFromMicrodata() {
+        document.querySelectorAll('[itemtype="http://schema.org/Product"]').forEach(card => {
+            const priceMeta = card.querySelector('[itemprop="offers"] [itemprop="price"]');
+            if (!priceMeta) return;
+
+            const price = priceMeta.getAttribute('content');
+            card.dataset.precio = price;
+
+            const visible = card.querySelector('[data-precio-visible]');
+            if (visible) visible.textContent = this.formatPrice(Number(price));
+
+            const select = card.querySelector('.presentacion-select');
+            if (!select) return;
+
+            const extras = {};
+            card.querySelectorAll('[itemprop="additionalProperty"]').forEach(prop => {
+                const id = prop.querySelector('[itemprop="propertyID"]')?.getAttribute('content');
+                const value = prop.querySelector('[itemprop="value"]')?.getAttribute('content');
+                if (id && value) extras[id] = value;
+            });
+
+            select.querySelectorAll('option').forEach(option => {
+                const cantidad = option.dataset.cantidad;
+                let optionPrice = price;
+                if (cantidad === '12') optionPrice = extras['precio-12'];
+                if (cantidad === '24') optionPrice = extras['precio-24'];
+                if (!optionPrice) return;
+                option.value = optionPrice;
+                option.textContent = cantidad + ' unidades — ' + this.formatPrice(Number(optionPrice));
+            });
+        });
     },
 
     // Formatea un número como moneda colombiana ($XX.XXX)
