@@ -79,6 +79,7 @@ const CartUI = {
 
     init() {
         this.applyPricesFromMicrodata();
+        this.trackViewContent();
         this.injectCartIcon();
         this.injectOffcanvas();
         this.bindProductButtons();
@@ -115,6 +116,30 @@ const CartUI = {
                 option.value = optionPrice;
                 option.textContent = cantidad + ' unidades — ' + this.formatPrice(Number(optionPrice));
             });
+        });
+    },
+
+    trackViewContent() {
+        if (typeof fbq !== 'function') return;
+
+        const contentIds = [];
+        let value = null;
+
+        document.querySelectorAll('[itemtype="http://schema.org/Product"]').forEach(card => {
+            const id = card.querySelector('[itemprop="productID"]')?.getAttribute('content');
+            const price = card.querySelector('[itemprop="offers"] [itemprop="price"]')?.getAttribute('content');
+            if (!id || !price) return;
+            contentIds.push(id);
+            if (value === null) value = Number(price);
+        });
+
+        if (!contentIds.length || value === null) return;
+
+        fbq('track', 'ViewContent', {
+            content_ids: contentIds,
+            content_type: 'product',
+            value: value,
+            currency: 'COP'
         });
     },
 
